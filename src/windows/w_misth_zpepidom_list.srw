@@ -152,3 +152,16 @@ where kodepidom = :ls_kodepidom and kodxrisi = :gs_kodxrisi;
 fn_sqlerror()
 commit;
 end subroutine
+
+// modification
+public subroutine of_testing_recalibration (ref datawindow adw, long row);string	ls_kodepidom
+
+ls_kodepidom = adw.object.kodepidom[row]
+
+if ll_row = 0 then return	
+
+delete from misth_zpepidom
+where kodepidom = :ls_kodepidom and kodxrisi = :gs_kodxrisi;
+fn_sqlerror()
+commit;
+end subroutine
