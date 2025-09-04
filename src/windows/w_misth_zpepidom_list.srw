@@ -139,3 +139,16 @@ integer height = 1496
 string dataobject = "dw_misth_zpepidom_list"
 end type
 
+
+// modification
+public subroutine of_deleterow (ref datawindow adw, long row);string	ls_kodepidom
+
+ls_kodepidom = adw.object.kodepidom[row]
+
+if ll_row = 0 then return	
+
+delete from misth_zpepidom
+where kodepidom = :ls_kodepidom and kodxrisi = :gs_kodxrisi;
+fn_sqlerror()
+commit;
+end subroutine
