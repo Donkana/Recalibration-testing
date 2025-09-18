@@ -112,8 +112,7 @@ gsc_misth_zpepidom.hasasf = 0
 
 end subroutine
 
-protected subroutine of_reset_struct ();gsc_misth_zpepidom_reset()
-end subroutine
+//removed
 
 protected subroutine of_retrieve (ref datawindow adw);dw.retrieve(gs_kodxrisi)
 end subroutine
@@ -138,30 +137,3 @@ integer width = 3214
 integer height = 1496
 string dataobject = "dw_misth_zpepidom_list"
 end type
-
-
-// modification
-public subroutine of_deleterow (ref datawindow adw, long row);string	ls_kodepidom
-
-ls_kodepidom = adw.object.kodepidom[row]
-
-if ll_row = 0 then return	
-
-delete from misth_zpepidom
-where kodepidom = :ls_kodepidom and kodxrisi = :gs_kodxrisi;
-fn_sqlerror()
-commit;
-end subroutine
-
-// modification
-public subroutine of_testing_recalibration (ref datawindow adw, long row);string	ls_kodepidom
-
-ls_kodepidom = adw.object.kodepidom[row]
-
-if ll_row = 0 then return	
-
-delete from misth_zpepidom
-where kodepidom = :ls_kodepidom and kodxrisi = :gs_kodxrisi;
-fn_sqlerror()
-commit;
-end subroutine
